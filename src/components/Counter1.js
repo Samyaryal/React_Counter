@@ -1,18 +1,22 @@
 import React, { useState} from "react";
 
-function Counter() {
+function Counter1() {
   const [count, setCount] = useState(0);
 
-  const handleIncrement = () => {
-    setCount(prevCount => prevCount + 1);
-  };
 
-  const handleDecrement = () => {
-    setCount(prevCount => prevCount - 1);
-  };
+  async function handleIncrement() {
+    const newCount = await setCount(count + 1)
+    console.log(newCount)
+  }
+
+  async function handleDecrement() {
+    const newCount = await setCount(count - 1)
+    console.log(newCount)
+  }
+  
   return (
     <div>
-      <h3 className ="counter-header">Count is {count}</h3>
+      <h3 className="counter-header">Count is {count}</h3>
       <div className="buttons-group">
         <button className="buttons" onClick={handleDecrement}>Decrement</button>
         <button className="buttons" onClick={handleIncrement}>Increment</button>
@@ -22,4 +26,4 @@ function Counter() {
   );
 }
 
-export default Counter;
+export default Counter1;
